@@ -1,54 +1,7 @@
-# Deteccion_circulos
- Este repositorio se utiliza para localizar circulos en una imagen
- Para ello se crea la función encCirc en Python
+import math
+import cv2
+import numpy as np
 
-## Parámetros
-- Entrada
- - **_img_**: imagen de entrada,
- - **_thres_**: umbral de threshold
- - **_blur_**:  filtro gaussiano
- - **_contMin_**: area mínima
- - **_contMax_**: area máxima
- - **_cMin_**: circularidad mínima
- - **_cMax_**: circularidad máxima
- - **_grosor_**: grosor de los circulos en la imagen de salida
-
-- Outputs
- - **_contours_area_**: contornos que cumplen con las áreas de salida
- - **_contour_circles_**: contornos que cumplen con los criterios de circularidad
- - **_centro_**: lista de centros de los circulos
- - **_radio_**: lista de radios de los circulos
-
-
-
-## Descripción del funcionamiento
-
-1. Eliminamos el ruido de la imagen con una matriz de _blur_ x _blur_
-``` python
- im_gauss = cv2.GaussianBlur(imgray, (blur, blur), 0)
-```
-2. Aplicamos un threshold con un umbral _thres_
-``` python
-ret, imgthresh = cv2.threshold(im_gauss, thres,255, cv2.THRESH_BINARY_INV)
-```
-3. Buscamos los contornos que nos deja la imagen
-``` python
-contours, hierarchy = cv2.findContours(imgthresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-```
-4. Ahora se calcula el area, el perimetro y la circularidad de los contornos
-``` python
-area = cv2.contourArea(con)
-perimeter = cv2.arcLength(con, True)
-circularity = 4*math.pi*(area/(perimeter*perimeter))
-```
-5. Con el área y la circularidad se comprueba si los contornos cumplen las condiciones de area mínima/máxima y de circularidad mínima/máxima
-
-6. Si el contorno pasa la criba entonces se calcula cual es su centro y su radio, y se guardan en dos listas llamadas **centro** y **radio**
-
-7. Se dibuja el contorno en la imagen
-
-## Función
-``` python
 def encCirc(imagen, thres=130, blur=5, contMin=100, contMax=320, cMin=0.6, cMax=1.2, grosor=1, color=(255,0,0)):
     """
     Inputs: 
@@ -94,4 +47,3 @@ def encCirc(imagen, thres=130, blur=5, contMin=100, contMax=320, cMin=0.6, cMax=
     cv2.drawContours(imagen, contours_circles, -1, color, grosor)
     return contours_area, contours_circles, centro, radio
 
-```
