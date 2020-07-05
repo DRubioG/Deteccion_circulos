@@ -4,20 +4,20 @@
 
 ## Parámetros
 - Entrada
- - **_img_**: imagen de entrada,
- - **_thres_**: umbral de threshold
- - **_blur_**:  filtro gaussiano
- - **_contMin_**: area mínima
- - **_contMax_**: area máxima
- - **_cMin_**: circularidad mínima
- - **_cMax_**: circularidad máxima
- - **_grosor_**: grosor de los circulos en la imagen de salida
+    - **_img_**: imagen de entrada,
+    - **_thres_**: umbral de threshold
+    - **_blur_**:  filtro gaussiano
+    - **_contMin_**: area mínima
+    - **_contMax_**: area máxima
+    - **_cMin_**: circularidad mínima
+    - **_cMax_**: circularidad máxima
+    - **_grosor_**: grosor de los circulos en la imagen de salida
 
 - Outputs
- - **_contours_area_**: contornos que cumplen con las áreas de salida
- - **_contour_circles_**: contornos que cumplen con los criterios de circularidad
- - **_centro_**: lista de centros de los circulos
- - **_radio_**: lista de radios de los circulos
+    - **_contours_area_**: contornos que cumplen con las áreas de salida
+    - **_contour_circles_**: contornos que cumplen con los criterios de circularidad
+    - **_centro_**: lista de centros de los circulos
+    - **_radio_**: lista de radios de los circulos
 
 
 
